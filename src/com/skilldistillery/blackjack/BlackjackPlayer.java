@@ -38,4 +38,10 @@ public class BlackjackPlayer implements BlackjackPlayControls {
 		return hand.getHandValue();
 	}
 
+	@Override
+	public BlackjackHand getHand() {
+		BlackjackHand newHand = hand;
+		return newHand;
+	}
+
 }

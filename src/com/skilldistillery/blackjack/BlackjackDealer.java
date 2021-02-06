@@ -1,7 +1,5 @@
 package com.skilldistillery.blackjack;
 
-import java.util.Collections;
-
 import com.skilldistillery.cards.Card;
 import com.skilldistillery.cards.DeckOfCards;
 
@@ -63,4 +61,9 @@ public class BlackjackDealer implements BlackjackDealerControls, BlackjackPlayCo
 		return hand.getHandValue();
 	}
 
+	@Override
+	public BlackjackHand getHand() {
+		BlackjackHand newHand = hand;
+		return newHand;
+	}
 }

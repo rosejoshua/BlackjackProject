@@ -8,6 +8,7 @@ public interface BlackjackPlayControls {
 	void stay();
 	void addCard(Card card);
 	int getHandValue();
+	BlackjackHand getHand();
 	String showHand();
 
 }
