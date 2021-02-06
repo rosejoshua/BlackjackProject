@@ -13,17 +13,7 @@ public class BlackjackDealer implements BlackjackDealerControls, BlackjackPlayCo
 		hand = new BlackjackHand();
 	}
 
-	@Override
-	public void hit() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void stay() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void shuffle() {

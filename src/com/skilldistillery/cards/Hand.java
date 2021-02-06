@@ -12,9 +12,7 @@ public abstract class Hand {
 	public void addCard(Card card) {
 		cards.add(card);
 	}
-	
-//	public void clear() {
-//	}
+
 	
 	public abstract int getSize();
 	
