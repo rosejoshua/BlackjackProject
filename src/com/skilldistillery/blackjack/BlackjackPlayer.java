@@ -11,18 +11,6 @@ public class BlackjackPlayer implements BlackjackPlayControls {
 	}
 
 	@Override
-	public void hit() {
-		
-
-	}
-
-	@Override
-	public void stay() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public String showHand() {
 		return hand.toString();
 	}
