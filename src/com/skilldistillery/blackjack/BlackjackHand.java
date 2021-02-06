@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import com.skilldistillery.cards.Card;
 import com.skilldistillery.cards.Hand;
 
-public class BlackjackHand extends Hand {
-	
+public class BlackjackHand extends Hand {	
 	
 
 	public BlackjackHand() {
@@ -52,5 +51,28 @@ public class BlackjackHand extends Hand {
 		}
 		return handValue;
 	}
+
+	@Override
+	public int getSize() {
+		return cards.size();
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	public String toString(boolean needsFirstCardDown) {
+		if(needsFirstCardDown) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(" [Hidden Card]");
+			for(int i=1; i<cards.size(); i++) {
+				sb.append(" [" + cards.get(i).toString() + "]");
+			}
+			return sb.toString();
+		}
+		else return super.toString();
+	}
+	
+	
 
 }

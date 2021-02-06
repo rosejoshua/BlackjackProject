@@ -1,13 +1,18 @@
 package com.skilldistillery.blackjack;
 
+import java.util.Collections;
+
+import com.skilldistillery.cards.Card;
 import com.skilldistillery.cards.DeckOfCards;
 
 public class BlackjackDealer implements BlackjackDealerControls, BlackjackPlayControls {
 	
-	private DeckOfCards deck = new DeckOfCards();	
+	private DeckOfCards deck;	
 	private BlackjackHand hand;
 
 	public BlackjackDealer() {
+		deck = new DeckOfCards();
+		hand = new BlackjackHand();
 	}
 
 	@Override
@@ -24,38 +29,38 @@ public class BlackjackDealer implements BlackjackDealerControls, BlackjackPlayCo
 
 	@Override
 	public void shuffle() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dealDealer() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void dealPlayer() {
-		// TODO Auto-generated method stub
-		
+		deck.shuffle();
 	}
 
 	@Override
 	public int checkDeckSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String showHandCardDown() {
-		// TODO Auto-generated method stub
-		return null;
+		return deck.checkDeckSize();
 	}
 
 	@Override
 	public String showHand() {
-		// TODO Auto-generated method stub
-		return null;
+		return hand.toString();
+	}
+
+	@Override
+	public void addCard(Card card) {
+		hand.addCard(card);
+		
+	}
+
+	@Override
+	public Card dealCard() {
+		return deck.dealCard();
+	}
+
+	@Override
+	public String showHand(boolean needsFirstCardDown) {
+		return hand.toString(needsFirstCardDown);
+	}
+
+	@Override
+	public int getHandValue() {
+		return hand.getHandValue();
 	}
 
 }

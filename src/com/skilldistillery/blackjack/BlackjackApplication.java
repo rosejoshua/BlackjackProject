@@ -10,10 +10,14 @@ import com.skilldistillery.cards.DeckOfCards;
 
 public class BlackjackApplication {
 	
+	BlackjackDealer dealer;
+	BlackjackPlayer player;	
 	
 	private Scanner input = new Scanner(System.in);
 
-	public BlackjackApplication() {		
+	public BlackjackApplication() {	
+		dealer = new BlackjackDealer();
+		player = new BlackjackPlayer();
 	}
 
 	public static void main(String[] args) {
@@ -22,38 +26,32 @@ public class BlackjackApplication {
 	}
 	
 	private void run() {
-		List<Card> userDeck = new ArrayList<>();
 		
-		try {
-			numCardsToDraw = input.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("Invalid input. Restart Program.");
-			return;
+		boolean run = true;
+		
+		while(run) {
+			
+			dealer.shuffle();
+			player.addCard(dealer.dealCard());
+			dealer.addCard(dealer.dealCard());
+			player.addCard(dealer.dealCard());
+			dealer.addCard(dealer.dealCard());
+			
+//			int playerScore = player.getHandValue();
+			
+			System.out.println(dealer.showHand(true));
+			System.out.print(player.showHand());
+			System.out.println(" Value: " + player.getHandValue());
+			
+			String breakString;
+			System.out.println("to here?");
+			breakString = this.input.next();
+		
+//		try {
+//			
+//		} catch (InputMismatchException e) {
+//			
 		}
-		
-		if(numCardsToDraw==0 && this.deck.checkDeckSize()!=0) {
-			System.out.println("Invalid input 0");
-			return;
-		}
-		if(numCardsToDraw > this.deck.checkDeckSize()) {
-			System.out.println("Invalid input, not enought cards in deck.");
-			return;
-		}
-		
-		
-		for (int i=0; i<numCardsToDraw; i++) {
-			userDeck.add(this.deck.dealCard());
-		}
-		
-		for (Card card : userDeck) {
-			totalCardValue+=card.getValue();
-		}
-		
-		for (Card card : userDeck) {
-			System.out.println(card);
-		}
-		
-		System.out.println("Total card value: " + totalCardValue);
 	}
 
 }

@@ -13,9 +13,10 @@ public abstract class Hand {
 		cards.add(card);
 	}
 	
-	public void clear() {
-		//clears table?
-	}
+//	public void clear() {
+//	}
+	
+	public abstract int getSize();
 	
 	public abstract int getHandValue();
 	
@@ -23,7 +24,7 @@ public abstract class Hand {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (Card card : cards) {
-			sb.append(card.toString());
+			sb.append(" [" + card.toString() + "]");
 		}
 		return sb.toString();
 	}

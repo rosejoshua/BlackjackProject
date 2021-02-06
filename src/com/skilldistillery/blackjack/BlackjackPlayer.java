@@ -1,14 +1,18 @@
 package com.skilldistillery.blackjack;
 
+import com.skilldistillery.cards.Card;
+
 public class BlackjackPlayer implements BlackjackPlayControls {
+	
+	private BlackjackHand hand;
 
 	public BlackjackPlayer() {
-		// TODO Auto-generated constructor stub
+		hand = new BlackjackHand();
 	}
 
 	@Override
 	public void hit() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -20,8 +24,18 @@ public class BlackjackPlayer implements BlackjackPlayControls {
 
 	@Override
 	public String showHand() {
-		// TODO Auto-generated method stub
-		return null;
+		return hand.toString();
+	}
+
+	@Override
+	public void addCard(Card card) {
+		hand.addCard(card);
+		
+	}
+
+	@Override
+	public int getHandValue() {
+		return hand.getHandValue();
 	}
 
 }

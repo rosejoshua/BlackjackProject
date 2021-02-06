@@ -1,14 +1,15 @@
 package com.skilldistillery.blackjack;
 
+import com.skilldistillery.cards.Card;
+
 public interface BlackjackDealerControls {
 	
 	final int CARDS_PER_DEAL = 2;
 	
 	void shuffle();
-	void dealDealer();
-	void dealPlayer();
+	Card dealCard();
 	int checkDeckSize();
-	String showHandCardDown();
 	String showHand();
+	String showHand(boolean needsFirstCardDown);
 
 }
