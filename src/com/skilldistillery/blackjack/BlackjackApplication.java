@@ -113,7 +113,7 @@ public class BlackjackApplication {
 			} else {
 				System.out.println("Dealer has 21!");
 			}
-			if(dealer.getHand().getSize()==2 && player.getHand().getSize()>2) {
+			if((dealer.getHand().getSize()==2 && player.getHand().getSize()>2) || (dealer.getHand().getSize()==2 && player.getHand().getSize()==2 && !player.getHand().isBlackjack())) {
 				System.out.println("Dealer wins!");
 			}
 			else {
@@ -155,7 +155,7 @@ public class BlackjackApplication {
 	private void hitOrStayDealer (BlackjackPlayer player, BlackjackDealer dealer) {
 		do {
 			printBothHands(player.getHand(), dealer.getHand());
-			if(dealer.getHandValue()<17) {
+			if((dealer.getHandValue()<17 && (player.getHandValue() > dealer.getHandValue())) && player.getHandValue()<22) {
 				dealer.addCard(dealer.dealCard());
 				System.out.println("[Dealer hits...]");
 			}
