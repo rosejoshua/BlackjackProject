@@ -35,9 +35,7 @@ public class BlackjackApplication {
 				
 				printBothHandsCardDown(player.getHand(), dealer.getHand());
 				
-				haveWinner = checkWinner21(player.getHand(), dealer.getHand());
-				if(haveWinner && player.getHandValue()==21) {
-					hitOrStayDealer(player, dealer);
+				if(dealer.getHandValue()!=21 && player.getHandValue()==21) {
 					checkWinner21(player.getHand(), dealer.getHand());
 					break;
 				}
@@ -85,7 +83,7 @@ public class BlackjackApplication {
 	private boolean checkWinner21(BlackjackHand playerHand, BlackjackHand dealerHand) {
 		if (playerHand.isBlackjack()) {
 			
-			if (playerHand.getSize() == 2 && dealerHand.getSize()==2  && dealerHand.getHandValue()>16) {
+			if (playerHand.getSize() == 2 && dealerHand.getSize()==2 ) {
 				System.out.println("You have a blackjack!");
 			}
 			else if (playerHand.getSize()>2) {
@@ -100,21 +98,29 @@ public class BlackjackApplication {
 				System.out.println("You win!!!");	
 				return true;
 			}
-			
-			if (dealerHand.isBlackjack()) {
+			if ((!dealerHand.isBlackjack() && playerHand.getSize() == 2)) {
 				printBothHands(playerHand, dealerHand);
-				
-				if (dealerHand.getSize() == 2) {
-					System.out.println("Dealer has a blackjack!");
-				} else {
-					System.out.println("Dealer has 21!");
-				}
-				
+				System.out.println("You win!!!");	
+				return true;
+			}
+		}
+			
+		if (dealerHand.isBlackjack()) {
+			printBothHands(playerHand, dealerHand);
+			
+			if (dealerHand.getSize() == 2) {
+				System.out.println("Dealer has a blackjack!");
+			} else {
+				System.out.println("Dealer has 21!");
+			}
+			if(dealer.getHand().getSize()==2 && player.getHand().getSize()>2) {
+				System.out.println("Dealer wins!");
+			}
+			else {
 				System.out.println("You tie with the dealer.");
 			}
 			return true;
-		
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -155,7 +161,7 @@ public class BlackjackApplication {
 			}
 			
 		} while (dealer.getHandValue()<17);	
-		if(dealer.getHandValue()>17 && dealer.getHandValue()<21) {
+		if(dealer.getHandValue()>17 && dealer.getHandValue()<22) {
 			System.out.println("[Dealer stays...]");
 		}
 	}	
